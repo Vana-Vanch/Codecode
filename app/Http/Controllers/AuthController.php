@@ -10,24 +10,46 @@ use Illuminate\Support\Facades\Cookie;
 class AuthController extends Controller
 {
     public function register(Request $request){
+        
         $field = $request->validate([
             'name' => 'required|max:255',
             'rollno' => 'required|max:10',
             'email' => 'required',
             'password' => 'required|confirmed'
         ]);
-
-        User::create([
-            'name' => $field['name'],
-            'rollno' => $field['rollno'],
-            'email' => $field['email'],
-            'password' => bcrypt($field['password']),
-        ]);
-
+        if($request->ppic){
+            
+            $imgNewName = time().'-'.$request->name.'.'.$request->ppic->extension();
+            $request->ppic->move(public_path('images/profilepics/'),$imgNewName);
+            User::create([
+                'name' => $field['name'],
+                'rollno' => $field['rollno'],
+                'email' => $field['email'],
+                'profilePicture' => $imgNewName,
+                'password' => bcrypt($field['password']),
+            ]);
+            return response([
+                'message' => 'User created',
+                'user' => $field
+            ]);
+      
+        }else{
+            User::create([
+                'name' => $field['name'],
+                'rollno' => $field['rollno'],
+                'email' => $field['email'],
+                'password' => bcrypt($field['password']),
+            ]);
+    
+            return response([
+                'message' => 'success',
+                'user' => $field
+            ]);
+        }    
         return response([
-            'message' => 'User created',
-            'user' => $field
+            'error' => 'invalid form'
         ]);
+
     }
 
     public function login(Request $request){
