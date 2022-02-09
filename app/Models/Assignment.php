@@ -14,4 +14,9 @@ class Assignment extends Model
         'in',
         'out'
     ];
+
+//     public function submissions(){
+//         return $this->hasMany(Submission::class);
+//     }
+// }
 }
