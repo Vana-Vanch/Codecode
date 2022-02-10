@@ -13,7 +13,7 @@ class AuthController extends Controller
         
         $field = $request->validate([
             'name' => 'required|max:255',
-            'rollno' => 'required|max:10',
+            'rollno' => 'required|max:20',
             'email' => 'required',
             'password' => 'required|confirmed'
         ]);

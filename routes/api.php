@@ -4,6 +4,7 @@ use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Please;
 use App\Http\Controllers\PracticeController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SubmitAssignment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -50,11 +51,20 @@ Route::get('/come', function(){
 
 
 //Assignment
-
+//All assignment List
 Route::get('/assignmentlist', [AssignmentController::class, 'getAssignment']);
+//Create Assignment
 Route::post('/assignmentcreate', [AssignmentController::class, 'createAssignment']);
+//Get One Assignment
 Route::get('/oneassignment/{id}', [AssignmentController::class, 'getoneAssignment']);
+//Submit an Assignment
 Route::middleware('auth:sanctum')->post('/submit/{id}', [SubmitAssignment::class, 'store']);
+//Get all Submissions
 Route::get('/getsubmit', [SubmitAssignment::class, 'getSubmit']);
-Route::get('/onesubmit/{id}', [SubmitAssignment::class, 'getOneSubmit']);
+//Get Particular submission
+Route::middleware('auth:sanctum')->get('/onesubmit/{id}', [SubmitAssignment::class, 'getOneSubmit']);
 
+//Get Particular students code
+Route::post('/studentcode/{id}', [ReviewController::class, 'getStudentCode']);
+//Make review
+Route::post('/review/{id}', [ReviewController::class, 'reviewStore']);
