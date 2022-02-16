@@ -94,7 +94,7 @@ class SubmitAssignment extends Controller
         $userId = Auth::user()->id;
         $theone = Submission::where('assignments_id',$id)->where('user_id',$userId)->get();
         $assignment = Assignment::find($id);
-        $ouptut = null;
+        $output = null;
         $retval = null;
         $filename = $theone[0]->userCode;
         $command = 'cat /home/vana/Study/laravel/codecode/public/storage/submits/'.$filename;
