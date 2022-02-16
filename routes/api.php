@@ -63,6 +63,8 @@ Route::middleware('auth:sanctum')->post('/submit/{id}', [SubmitAssignment::class
 Route::get('/getsubmit', [SubmitAssignment::class, 'getSubmit']);
 //Get Particular submission
 Route::middleware('auth:sanctum')->get('/onesubmit/{id}', [SubmitAssignment::class, 'getOneSubmit']);
+//Check whether a user has submission on a particular assignment
+Route::middleware('auth:sanctum')->get('/checksubmit/{id}', [SubmitAssignment::class, 'checkSubmit']);
 
 //Get Particular students code
 Route::post('/studentcode/{id}', [ReviewController::class, 'getStudentCode']);

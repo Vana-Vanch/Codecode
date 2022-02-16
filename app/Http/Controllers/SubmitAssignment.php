@@ -105,4 +105,31 @@ class SubmitAssignment extends Controller
             'code' => $output
         ]);
     }   
+
+    public function checkSubmit($id){
+        $uId = Auth::user()->id;
+  
+            $theAssignment = Submission::where('assignments_id', $id)->where('user_id', $uId)->get();
+            if(count($theAssignment) === 0){
+                return response([
+                    'message' => 'null'
+                ]);
+            }else{
+                $filename = $theAssignment[0]->userCode;
+                $output = null;
+                $retval = null;
+             
+                $command = 'cat /home/vana/Study/laravel/codecode/public/storage/submits/'.$filename;
+                exec($command,$output,$retval);
+                return response([
+                    'message' => 'submitted',
+                    'current' => $theAssignment,
+                    'code' => $output
+                ]);
+            }
+        
+      
+            
+        
+    }
 }
