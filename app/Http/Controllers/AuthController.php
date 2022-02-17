@@ -29,7 +29,7 @@ class AuthController extends Controller
                 'password' => bcrypt($field['password']),
             ]);
             return response([
-                'message' => 'User created',
+                'message' => 'success',
                 'user' => $field
             ]);
       

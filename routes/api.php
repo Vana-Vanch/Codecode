@@ -65,7 +65,8 @@ Route::get('/getsubmit', [SubmitAssignment::class, 'getSubmit']);
 Route::middleware('auth:sanctum')->get('/onesubmit/{id}', [SubmitAssignment::class, 'getOneSubmit']);
 //Check whether a user has submission on a particular assignment
 Route::middleware('auth:sanctum')->get('/checksubmit/{id}', [SubmitAssignment::class, 'checkSubmit']);
-
+//Profile Assignment
+Route::middleware('auth:sanctum')->get('/myassignments', [AssignmentController::class,'profileAssignment']);
 //Get Particular students code
 Route::post('/studentcode/{id}', [ReviewController::class, 'getStudentCode']);
 //Make review

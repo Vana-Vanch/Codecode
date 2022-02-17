@@ -44,6 +44,19 @@ class AssignmentController extends Controller
         ]);
     }
 
+    public function profileAssignment(){
+        $theId = Auth::user()->id;
+
+        $result = Submission::where('user_id', $theId)->get();
+        return $result;
+        // $assid = Assignment::where('id',$result->assignments_id);
+        return response([
+            'msg' => $result,
+        
+        ]);
+    }
+
+
     public function storeAssignment(Request $request, $id){
         
         // $request->validate([
