@@ -20,6 +20,7 @@ class SubmitAssignment extends Controller
         
         $userId = Auth::user()->id;
         $assignment = Assignment::find($id);
+       
         $assignmentName = $assignment->title;
         $theCode = $request->zecode;
         $lang = $request->language;
@@ -43,7 +44,8 @@ class SubmitAssignment extends Controller
             Submission::create([
                 'user_id' => $userId,
                 'assignments_id' => $id,
-                'userCode' => $withExt
+                'userCode' => $withExt,
+                'title' => $assignmentName
             ]);
             return response([
                 'message' => 'Assignment submitted'
@@ -54,7 +56,8 @@ class SubmitAssignment extends Controller
             Submission::create([
                 'user_id' => $userId,
                 'assignments_id' => $id,
-                'userCode' => $withExt
+                'userCode' => $withExt,
+                'title' => $assignmentName
             ]);
             return response([
                 'message' => 'Assignment submitted'
@@ -65,7 +68,8 @@ class SubmitAssignment extends Controller
             Submission::create([
                 'user_id' => $userId,
                 'assignments_id' => $id,
-                'userCode' => $withExt
+                'userCode' => $withExt,
+                'title' => $assignmentName
             ]);
             return response([
                 'message' => 'Assignment submitted'
@@ -76,7 +80,8 @@ class SubmitAssignment extends Controller
             Submission::create([
                 'user_id' => $userId,
                 'assignments_id' => $id,
-                'userCode' => $withExt
+                'userCode' => $withExt,
+                'title' => $assignmentName
             ]);
             return response([
                 'message' => 'Assignment submitted'
