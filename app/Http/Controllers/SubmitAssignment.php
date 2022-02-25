@@ -92,7 +92,9 @@ class SubmitAssignment extends Controller
     public function getSubmit(){
         $submits = Submission::all();
          
-        return $submits;
+        return response([
+            'assignments' => $submits
+        ]);
     }
 
     public function getOneSubmit($id){

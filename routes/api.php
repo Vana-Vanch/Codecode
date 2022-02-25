@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Please;
@@ -71,3 +72,7 @@ Route::middleware('auth:sanctum')->get('/myassignments', [AssignmentController::
 Route::post('/studentcode/{id}', [ReviewController::class, 'getStudentCode']);
 //Make review
 Route::post('/review/{id}', [ReviewController::class, 'reviewStore']);
+
+
+//Get all Users
+Route::get('/allusers',[AdminController::class, 'allUsers']);
