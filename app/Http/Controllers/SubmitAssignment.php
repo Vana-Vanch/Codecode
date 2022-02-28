@@ -14,14 +14,17 @@ class SubmitAssignment extends Controller
         $request->validate([
         
             'zecode'=> 'required',
-            'language' => 'required'
+            'language' => 'required',
+            
         ]);
 
         
         $userId = Auth::user()->id;
+      
         $assignment = Assignment::find($id);
-       
+
         $assignmentName = $assignment->title;
+      
         $theCode = $request->zecode;
         $lang = $request->language;
         $destination = public_path()."/storage/submits/";
@@ -33,7 +36,8 @@ class SubmitAssignment extends Controller
             Submission::create([
                 'user_id' => $userId,
                 'assignments_id' => $id,
-                'userCode' => $withExt
+                'userCode' => $withExt,
+                'title' => $assignmentName
             ]);
             return response([
                 'message' => 'Assignment submitted'
@@ -51,7 +55,7 @@ class SubmitAssignment extends Controller
                 'message' => 'Assignment submitted'
             ]);
         }else if($lang == 'python'){
-            $withExt = $file.'.python';
+            $withExt = $file.'.py';
             File::put($destination.$withExt,$theCode);
             Submission::create([
                 'user_id' => $userId,
