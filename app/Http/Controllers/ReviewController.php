@@ -10,8 +10,9 @@ use Illuminate\Http\Request;
 class ReviewController extends Controller
 {
     public function getStudentCode(Request $request,$id){
-        $student = User::find($request->stuId);
-        $assignment = Submission::where('user_id',$student->id)->where('assignments_id',$id)->get();
+       
+   
+        $assignment = Submission::where('uname',$request->stuName)->where('assignments_id',$id)->get();
         $filename = $assignment[0]->userCode;
         $output = null;
         $retval = null;
