@@ -78,3 +78,5 @@ Route::post('/review/{id}', [ReviewController::class, 'reviewStore']);
 Route::get('/allusers',[AdminController::class, 'allUsers']);
 //get submission List of one assignment
 Route::post('/sublist/{id}', [AdminController::class, 'assignmentSubList']);
+//check assignment present
+Route::post('/checkthis/{id}', [ReviewController::class, 'checkassignment']);
