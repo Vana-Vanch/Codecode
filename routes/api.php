@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Please;
@@ -80,3 +81,11 @@ Route::get('/allusers',[AdminController::class, 'allUsers']);
 Route::post('/sublist/{id}', [AdminController::class, 'assignmentSubList']);
 //check assignment present
 Route::post('/checkthis/{id}', [ReviewController::class, 'checkassignment']);
+
+
+//Announcements
+Route::get('/allannouncements', [AnnouncementController::class, 'getAll']);
+
+Route::post('postAnnouncement', [AnnouncementController::class, 'storeAnnouncement']);
+
+Route::post('/removeAnnouncement/{id}', [AnnouncementController::class, 'removeAnnouncement']);
