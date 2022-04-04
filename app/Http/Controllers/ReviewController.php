@@ -45,7 +45,9 @@ class ReviewController extends Controller
     public function checkassignment(Request $request,$id){
         $student = User::where('name', $request->stuName)->first();
         $theId = $student->id;
-        if(!Review::where('user_id', $theId)->where('assignments_id', $id)){
+        $isThis = Review::where('user_id', $theId)->where('assignments_id', $id)->get();
+    
+        if(count($isThis) == 0){
             return 'False';
         }else{
             return 'True';

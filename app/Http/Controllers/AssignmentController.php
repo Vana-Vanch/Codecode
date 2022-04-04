@@ -20,8 +20,7 @@ class AssignmentController extends Controller
         $request->validate([
             'title' => 'required',
             'desc' => 'required',
-            'inpt' => 'required',
-            'outpt' => 'required'
+ 
         ]);
 
         Assignment::create([

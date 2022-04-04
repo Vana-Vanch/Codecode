@@ -12,7 +12,8 @@ class Submission extends Model
         'user_id',
         'assignments_id',
         'userCode',
-        'title'
+        'title',
+        'uname'
     ];
 
 

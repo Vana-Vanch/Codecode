@@ -20,6 +20,7 @@ class SubmitAssignment extends Controller
 
         
         $userId = Auth::user()->id;
+        $username = Auth::user()->name;
       
         $assignment = Assignment::find($id);
 
@@ -37,7 +38,8 @@ class SubmitAssignment extends Controller
                 'user_id' => $userId,
                 'assignments_id' => $id,
                 'userCode' => $withExt,
-                'title' => $assignmentName
+                'title' => $assignmentName,
+                'uname' => $username
             ]);
             return response([
                 'message' => 'Assignment submitted'
@@ -49,7 +51,8 @@ class SubmitAssignment extends Controller
                 'user_id' => $userId,
                 'assignments_id' => $id,
                 'userCode' => $withExt,
-                'title' => $assignmentName
+                'title' => $assignmentName,
+                'uname' => $username
             ]);
             return response([
                 'message' => 'Assignment submitted'
@@ -61,7 +64,8 @@ class SubmitAssignment extends Controller
                 'user_id' => $userId,
                 'assignments_id' => $id,
                 'userCode' => $withExt,
-                'title' => $assignmentName
+                'title' => $assignmentName,
+                'uname' => $username
             ]);
             return response([
                 'message' => 'Assignment submitted'
@@ -73,7 +77,8 @@ class SubmitAssignment extends Controller
                 'user_id' => $userId,
                 'assignments_id' => $id,
                 'userCode' => $withExt,
-                'title' => $assignmentName
+                'title' => $assignmentName,
+                'uname' => $username
             ]);
             return response([
                 'message' => 'Assignment submitted'
@@ -85,7 +90,8 @@ class SubmitAssignment extends Controller
                 'user_id' => $userId,
                 'assignments_id' => $id,
                 'userCode' => $withExt,
-                'title' => $assignmentName
+                'title' => $assignmentName,
+                'uname' => $username
             ]);
             return response([
                 'message' => 'Assignment submitted'
