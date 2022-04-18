@@ -30,13 +30,18 @@ class ReviewController extends Controller
         $student = User::where('name', $request->stuName)->first();
         $theId = $student->id;
      
-        // $assignment = Submission::where('user_id',$student->id)->where('assignments_id',$id)->get();
+        $assignment = Submission::where('user_id',$student->id)->where('assignments_id',$id)->update(array('marks' => $request->ratings));
+        return $assignment;
         Review::create([
             'user_id' => $theId,
             // 'assignments_id' => $assignment[0]->assignments_id,
             'assignments_id' => $id,
             'ratings' => $request->ratings
         ]);
+        
+
+
+
         return response([
             'message' => 'success'
         ]);
