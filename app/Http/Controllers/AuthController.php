@@ -15,9 +15,10 @@ class AuthController extends Controller
             'name' => 'required|max:255',
             'rollno' => 'required|max:20',
             'email' => 'required',
-            'password' => 'required|confirmed'
+            'password' => 'required|confirmed',
+     
         ]);
-        if($request->ppic){
+       if($request->ppic){
             
             $imgNewName = time().'-'.$request->name.'.'.$request->ppic->extension();
             $request->ppic->move(public_path('images/profilepics/'),$imgNewName);
@@ -27,6 +28,8 @@ class AuthController extends Controller
                 'email' => $field['email'],
                 'profilePicture' => $imgNewName,
                 'password' => bcrypt($field['password']),
+                'course' => $request->course
+
             ]);
             return response([
                 'message' => 'success',
@@ -39,6 +42,7 @@ class AuthController extends Controller
                 'rollno' => $field['rollno'],
                 'email' => $field['email'],
                 'password' => bcrypt($field['password']),
+                'course' => $request->course
             ]);
     
             return response([

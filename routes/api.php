@@ -70,9 +70,11 @@ Route::middleware('auth:sanctum')->get('/onesubmit/{id}', [SubmitAssignment::cla
 Route::middleware('auth:sanctum')->get('/checksubmit/{id}', [SubmitAssignment::class, 'checkSubmit']);
 //Profile Assignment
 Route::middleware('auth:sanctum')->get('/myassignments', [AssignmentController::class,'profileAssignment']);
+Route::middleware('auth:sanctum')->get('/parassignment', [AssignmentController::class, 'forallassignment']);
 //Get Particular students code
 Route::post('/studentcode/{id}', [ReviewController::class, 'getStudentCode']);
 //Make review
+
 
 
 Route::post('/review/{id}', [ReviewController::class, 'reviewStore']);

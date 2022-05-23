@@ -12,7 +12,8 @@ class Assignment extends Model
         'title',
         'description',
         'in',
-        'out'
+        'out',
+        'Course'
     ];
 
 //     public function submissions(){

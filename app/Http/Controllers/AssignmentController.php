@@ -16,6 +16,29 @@ class AssignmentController extends Controller
         ]);
     }
 
+    public function forallassignment(Request $request){
+        $theId = Auth::user()->isAdmin;
+        $assignments = Assignment::all();
+        if($theId == 1){
+           return response([
+               'assignments' => $assignments
+           ]);
+        }
+        if(Auth::user()->course == 'BCA'){
+            $assignments = Assignment::where('Course', Auth::user()->course)->get();
+            return response([
+                'assignments' => $assignments
+            ]);
+        }
+        $assignments = Assignment::where('Course', "MCA")->get();
+      
+        return response([
+            'assignments' => $assignments
+        ]);
+   
+        
+    }
+
     public function createAssignment(Request $request){
         $request->validate([
             'title' => 'required',
