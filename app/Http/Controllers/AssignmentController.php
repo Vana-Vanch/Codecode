@@ -50,7 +50,8 @@ class AssignmentController extends Controller
             'title' => $request->title,
             'description' => $request->desc,
             'in' => $request->inpt,
-            'out' => $request->outpt
+            'out' => $request->outpt,
+            'Course' => $request->kourse
         ]);
 
         return response([
